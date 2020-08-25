@@ -1,4 +1,4 @@
-This repository holds scripts used for modeling and analysis in Slabicki M*, Yoon H*, Koeppel J*, Nitsch L, Roy Burman SS, Di Genua CA, Donovan KA, Sperling AS, Hunkeler M, Tsai JM, Sharma R, Guirguis A, Zou C, Chudasama P, Gasser JA, Miller PG, Scholl C, Fröhling S, Nowak RP, Fischer ES & Ebert BL (2020). “Small molecule-induced polymerization triggers degradation of BCL6.”
+This repository holds scripts used for modeling and analysis in <b>Slabicki M<sup>*</sup>, Yoon H<sup>*</sup>, Koeppel J<sup>*</sup>, Nitsch L, Roy Burman SS, Di Genua CA, Donovan KA, Sperling AS, Hunkeler M, Tsai JM, Sharma R, Guirguis A, Zou C, Chudasama P, Gasser JA, Miller PG, Scholl C, Fröhling S, Nowak RP, Fischer ES<sup>+</sup> & Ebert BL<sup>+</sup> (2020). “Small molecule-induced polymerization triggers degradation of BCL6.”</b>
 
 <ol>
 <li><code>tmt4degrader_basic.R</code> was used for analysis of TMT-based whole proteome mass spectrometry experiments using limma moderated t-statistics. The inputs required are infile, sc, pre, w, contrast, and tmt.</li>
