@@ -1,0 +1,28 @@
+-in:file:s	BCL6_dimer_to_dimer_0001.pdb.gz
+-in:file:native	BCL6_dimer_to_dimer.pdb
+-unboundrot	BCL6_dimer_to_dimer.pdb
+
+-nstruct	10000
+
+-partners	AB_CD
+-dock_pert	3 8
+-spin
+
+-docking_low_res_score motif_dock_score
+-mh:path:scores_BB_BB $ROSETTA/main/database/additional_protocol_data/motif_dock/xh_16_
+-mh:score:use_ss1 false
+-mh:score:use_ss2 false
+-mh:score:use_aa1 true
+-mh:score:use_aa2 true
+
+-detect_disulf true
+-rebuild_disulf true
+-ignore_zero_occupancy	false
+-ex1
+-ex2aro
+
+-out:file:scorefile	docking_score.sc
+-out:path:pdb	out_pdb
+-out:pdb_gz
+
+-mpi_tracer_to_file     logs/docking_tracer.out

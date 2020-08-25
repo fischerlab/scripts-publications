@@ -1,0 +1,1 @@
+`tmt4degrader_basic.R` was used for analysis of TMT-based whole proteome mass spectrometry experiments using limma moderated t-statistics. The inputs required are infile, sc, pre, w, contrast, and tmt.
