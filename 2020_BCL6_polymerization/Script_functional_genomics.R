@@ -5,6 +5,7 @@ library(ggrepel)
 
 # Input file has to have the following structure: Col1 - "Gene Name", Col2 - "sgRNA sequence", remaining columns should contain read number data. 
 # Colnames should contain the following elements, separated by underscores: Experiment-name, Cell-line-name, Treatment, Selection-criteria (e.g. sorting-gate), replicate. "For example BCL6.reporter.screen_HEK293T_BI3802_High.gate_RepA"
+# Export every input file as .csv
 
 # ==== Section 1: Defining functions ====
 
@@ -293,47 +294,38 @@ run_pipeline <- function(main_path, input_file_name, screen_name, gate_list = c(
 
 # ==== Section 2: Running functions on the data used in the manuscript ====
 
-# Genome-scale eGFP-BCL6-FL reporter screen - For identification of gene-losses which prevent BI-3802-induced BCL6 degradation (Fig. 1e)
+# Genome-scale eGFP-BCL6-FL reporter screen - For identification of gene-losses which prevent BI-3802-induced BCL6 degradation (Extended Data Fig. 6b)
 run_pipeline("/pathname", 
              screen_name = "GW.BCL6FL.deg_H293T_BI3802", 
              gate_list = c("H", "L"), 
              replicate_list = c("Rep1", "Rep2", "Rep3"), 
              n_iterations = 100, 
              n_sgRNAs = 4, 
-             selected_hits = c("SIAH1", "SIAH2", "FBXO11"), 
+             selected_hits = c("SIAH1", "FBXO11"), 
              FDR_thr = 0.15)
 
-# Genome-scale eGFP-BCL6-FL reporter screen - For identification of gene-losses which stabilize BCL6 in the absence of BI-3802 (Extended Data Fig. 2)
+# Genome-scale eGFP-BCL6-FL reporter screen - For identification of gene-losses which stabilize BCL6 in the absence of BI-3802 (Extended Data Fig. 6c)
 run_pipeline("/pathname", 
              screen_name = "201808.GW.BCL6FL.deg_H293T_DMSO",
              gate_list = c("H", "L"), 
              replicate_list = c("Rep1", "Rep2", "Rep3"), 
              n_iterations = 50, 
              n_sgRNAs = 4, 
-             selected_hits = c("SIAH1", "SIAH2", "FBXO11"), 
+             selected_hits = c("SIAH1", "FBXO11"), 
              FDR_thr = 0.15)
 
-# Genome-scale BI-3802 resistance screen in SuDHL4 cells - BI-3802-treated cells compared to DMSO treated cells at day 20 (Fig. 1g)
+# Genome-scale BI-3802 resistance screen in SuDHL4 cells - BI-3802-treated cells compared to DMSO treated cells at day 20 (Extended Data Fig. 6f)
 run_pipeline("/pathname", 
              screen_name = "201812.BCL6.GW_SuDHL4", 
              gate_list = c("BI3802.DAY20", "DMSO.DAY20"), 
              replicate_list = c("Rep1", "Rep2", "Rep3"), 
              n_iterations = 100, 
              n_sgRNAs = 4, 
-             selected_hits = c("SIAH1", "SIAH2", "FBXO11"), 
+             selected_hits = c("SIAH1", "FBXO11"), 
              FDR_thr = 0.01)
 
-# Genome-scale BI-3802 resistance screen in SuDHL4 cells - DMSO-treated cells at day 20 compared to day 5 (Extended Data Fig. 3)
-run_pipeline("/pathname", 
-             screen_name = "201812.BCL6.GW_SuDHL4", 
-             gate_list = c("DMSO.DAY20", "NotTreated.Day5"), 
-             replicate_list = c("Rep1", "Rep2", "Rep3"), 
-             n_iterations = 100, 
-             n_sgRNAs = 4, 
-             selected_hits = c("SIAH1", "SIAH2", "FBXO11"), 
-             FDR_thr = 0.01)
 
-# Alanine scan of the BCL6-BTB domain in HEK293T cells - For identification of mutants that prvent BI-3802-induced BCL6 degradation (Extended Data Fig. 5)
+# Alanine scan of the BCL6-BTB domain in HEK293T cells - For identification of mutants that prvent BI-3802-induced BCL6 degradation (Extended Data Fig. 5c)
 run_pipeline("/pathname", 
              screen_name = "Ala.BCL6FL_H293T_1uM.BI3802", 
              gate_list = c("H", "L"), 
