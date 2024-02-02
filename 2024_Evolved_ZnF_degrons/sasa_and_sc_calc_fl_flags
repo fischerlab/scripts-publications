@@ -1,0 +1,14 @@
+-in:file:s	DDB1_CRBN_PT-179_SD40_fl.pdb
+
+-extra_res  PT-179.fa.params
+
+-nstruct	1
+
+-corrections::beta_nov16
+
+-parser:protocol	sasa_and_sc_calc_fl.xml
+
+-use_input_sc
+
+-out:file:scorefile	sasa_and_sc_score_fl.sc
+

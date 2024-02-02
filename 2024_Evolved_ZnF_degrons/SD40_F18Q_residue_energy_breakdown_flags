@@ -1,0 +1,8 @@
+-in:file:s	SD40_F18Q-RBA-CRBN_0001.pdb.gz
+-extra_res_fa PT-179.fa.params
+
+-corrections::beta_nov16
+
+-auto_setup_metals
+
+-out:file:scorefile     SD40_F18Q_residue_energy_breakdown.sc

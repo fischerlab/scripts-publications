@@ -1,0 +1,1 @@
+$ROSETTA_BIN/rosetta_scripts.mpi.linuxgccrelease @relax_density_cart_flags

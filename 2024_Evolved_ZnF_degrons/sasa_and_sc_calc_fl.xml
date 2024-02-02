@@ -1,0 +1,37 @@
+<ROSETTASCRIPTS>
+	
+	<SCOREFXNS>    
+		<ScoreFunction name="SFXN_beta16_vanilla" weights="beta_nov16.wts" symmetric="0" />
+	</SCOREFXNS>
+
+    <TASKOPERATIONS>
+        <ProteinInterfaceDesign name="pack_long" design_chain1="0" design_chain2="0" jump="4" interface_distance_cutoff="15"/>
+    </TASKOPERATIONS>
+	
+    <MOVERS>
+	    <AtomTree name="fold_tree" fold_tree_file="fold_tree_fl.ft"/>
+        <TaskAwareMinMover name="min" scorefxn="SFXN_beta16_vanilla" bb="0" chi="0" task_operations="pack_long"/>
+    </MOVERS>
+
+    <FILTERS>
+        <ShapeComplementarity name="sc_filt" jump="4" verbose="1" min_sc="0.50" write_int_area="0" confidence="0" />
+        <Sasa name="interface_buried_sasa" threshold="900" jump="4" confidence="0"/>
+        <Ddg name="ddg"  scorefxn="SFXN_beta16_vanilla" threshold="-30.0" jump="4" repack="0" relax_mover="min" confidence="0" />
+        <CalculatorFilter name="ddg_nm2" equation="ddg / ((sasa/100.0)+0.001)" threshold="-2.5" confidence="0" >
+            <Var name="ddg" filter="ddg"/>
+            <Var name="sasa" filter="interface_buried_sasa"/>
+        </CalculatorFilter>
+    </FILTERS>
+    
+    <PROTOCOLS>
+        **REMAKE foldtree
+        <Add mover="fold_tree"/>
+
+        **FILTER STEP5
+        <Add  filter="sc_filt" />
+        <Add  filter="interface_buried_sasa" />
+        <Add  filter="ddg" /> 
+        <Add  filter="ddg_nm2" />
+	</PROTOCOLS>
+
+</ROSETTASCRIPTS>

@@ -1,0 +1,23 @@
+-in::file::s    DDB1_CRBN_PT-179_SD40.pdb
+-extra_res_fa PT-179.fa.params
+-extra_res_cen PT-179.cen.params
+
+-parser::protocol   relax_density_cart.xml
+-beta
+
+-out:nstruct    200
+
+-edensity::mapreso  2.41
+-edensity::cryoem_scatterers
+-crystal_refine
+
+-ignore_unrecognized_res
+-auto_setup_metals
+
+-out:file:scorefile relax_density_cart_score.sc
+-out:path:pdb   out_pdb
+-out:file:fullatom
+-out:pdb_gz
+-out::suffix    _relax_density_cart
+
+-mpi_tracer_to_file logs/relax_density_cart_tracer.out
