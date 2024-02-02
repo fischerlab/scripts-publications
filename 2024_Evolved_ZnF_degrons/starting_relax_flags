@@ -1,0 +1,24 @@
+-in:file:s	SD40-RBA-CRBN.pdb SD40_F18Q-RBA-CRBN.pdb
+-extra_res_fa PT-179.fa.params
+-extra_res_cen PT-179.cen.params
+
+-nstruct 1
+
+-corrections::beta_nov16
+
+-relax:constrain_relax_to_start_coords
+-relax:coord_constrain_sidechains
+-cst_fa_weight 10.0
+-relax:jump_move    false
+-relax:script InterfaceRelax2019
+
+-ex1
+-ex2
+
+-auto_setup_metals
+-use_input_sc
+-flip_HNQ
+-no_optH false
+
+-out:file:scorefile     relax_score.sc
+-out:pdb_gz
